@@ -1860,3 +1860,1293 @@ Processing by OrdersController#index as HTML
 Completed 200 OK in 78ms (Views: 73.8ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/" for ::1 at 2019-01-06 12:40:51 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by OrdersController#index as HTML
+Completed 401 Unauthorized in 16ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-01-06 12:40:51 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (16.4ms)
+  Rendered layouts/_notifications.html.erb (1.0ms)
+Completed 200 OK in 658ms (Views: 633.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-01-06 12:40:59 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wd9DHEnfhYwJmWQG29gQHxUSr9WtV/anNHn01aGQEDlyg21A+5M1KHm8GjosppUeYAb07+9VPnq5r4xaFN5VTg==", "user"=>{"email"=>"somanianurmahal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "somanianurmahal@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2019-01-06 06:41:00 UTC], ["last_sign_in_at", 2018-12-11 05:33:55 UTC], ["sign_in_count", 5], ["updated_at", 2019-01-06 06:41:00 UTC], ["id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 165ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:41:00 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered orders/index.html.erb within layouts/application (24.0ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 125ms (Views: 83.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/items/new" for ::1 at 2019-01-06 12:41:24 +0600
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.8ms)
+  Rendered items/new.html.erb within layouts/application (17.5ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 108ms (Views: 95.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/items" for ::1 at 2019-01-06 12:42:09 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fm5pNH8hAoHof1KocD1Oo4vy/yD1fENz5uSaVKqAeuPR02rIk+4wFFZxLgkAgJ2vtoF2JtTy9YLZ+Jf7C5PjTQ==", "item"=>{"name"=>"Coffee pack", "description"=>"Kona coffee ", "quantity"=>"100", "category"=>"Tools"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  [1m[32mINSERT INTO "items" ("name", "category", "quantity", "description", "created_at", "updated_at", "remaining_quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Coffee pack"], ["category", "Tools"], ["quantity", 100], ["description", "Kona coffee "], ["created_at", 2019-01-06 06:42:09 UTC], ["updated_at", 2019-01-06 06:42:09 UTC], ["remaining_quantity", 100]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 33ms (ActiveRecord: 9.5ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:42:10 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.4ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered orders/index.html.erb within layouts/application (24.4ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 110ms (Views: 98.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:42:17 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.7ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered items/index.html.erb within layouts/application (14.5ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 106ms (Views: 95.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/orders/new?item=3" for ::1 at 2019-01-06 12:42:37 +0600
+Processing by OrdersController#new as HTML
+  Parameters: {"item"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.3ms)
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.5ms)
+  Rendered orders/new.html.erb within layouts/application (14.8ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 117ms (Views: 104.8ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/orders" for ::1 at 2019-01-06 12:42:56 +0600
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zsfg8ibNcotvSvVujcFmI8FGCPis9VrpKeovexff4Q1heuMOygJAHtFEic/9fLUv/DWB/o177BgW9iLUtsx4ow==", "order"=>{"quantity"=>"10", "expire_at"=>"2019/01/25", "member_id"=>"1", "item_id"=>"3"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "orders" ("quantity", "status", "expire_at", "item_id", "member_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["quantity", "10"], ["status", true], ["expire_at", Fri, 25 Jan 2019], ["item_id", 3], ["member_id", 1], ["created_at", 2019-01-06 06:42:56 UTC], ["updated_at", 2019-01-06 06:42:56 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[33mUPDATE "items" SET "remaining_quantity" = COALESCE("remaining_quantity", 0) - 10 WHERE "items"."id" = ?[0m  [["id", 3]]
+Redirected to http://localhost:3000/
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "delayed_jobs" ("handler", "run_at", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["handler", "--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class 'OrderMailer'\nmethod_name: :create_order\nargs:\n- !ruby/object:Order\n  raw_attributes:\n    id: 3\n    quantity: '10'\n    status: true\n    expire_at: 2019-01-25\n    item_id: 3\n    member_id: 1\n    created_at: &2 2019-01-06 06:42:56.138994000 Z\n    updated_at: &3 2019-01-06 06:42:56.138994000 Z\n  attributes: !ruby/object:ActiveRecord::AttributeSet\n    attributes:\n      id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: id\n        value_before_type_cast: 3\n        type: &6 !ruby/object:ActiveModel::Type::Integer\n          precision: \n          scale: \n          limit: \n          range: !ruby/range\n            begin: -2147483648\n            end: 2147483648\n            excl: true\n        original_attribute: \n      quantity: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: quantity\n        value_before_type_cast: '10'\n        type: &5 !ruby/object:ActiveModel::Type::String\n          precision: \n          scale: \n          limit: \n        original_attribute: \n      status: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: status\n        value_before_type_cast: true\n        type: !ruby/object:ActiveModel::Type::Boolean\n          precision: \n          scale: \n          limit: \n        original_attribute: \n      expire_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: expire_at\n        value_before_type_cast: 2019-01-25\n        type: !ruby/object:ActiveRecord::Type::Date\n          precision: \n          scale: \n          limit: \n        original_attribute: \n      item_id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: item_id\n        value_before_type_cast: 3\n        type: &1 !ruby/object:ActiveModel::Type::Integer\n          precision: \n          scale: \n          limit: \n          range: !ruby/range\n            begin: -2147483648\n            end: 2147483648\n            excl: true\n        original_attribute: \n      member_id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: member_id\n        value_before_type_cast: 1\n        type: *1\n        original_attribute: \n      created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: created_at\n        value_before_type_cast: *2\n        type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n          :__v2__: []\n          []: &4 !ruby/object:ActiveRecord::Type::DateTime\n            precision: \n            scale: \n            limit: \n        original_attribute: \n      updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: updated_at\n        value_before_type_cast: *3\n        type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n          :__v2__: []\n          []: *4\n        original_attribute: \n  new_record: false\n  active_record_yaml_version: 1\n- !ruby/object:User\n  raw_attributes:\n    encrypted_password: \"$2a$11$kF2w9sEZkL1WuwYp6SH6q.EDtmUSQXex8.XqDwqZSv5Mcd3B9hsWW\"\n    id: 1\n    name: Somania\n    created_at: '2018-12-10 11:15:26.653851'\n    updated_at: '2019-01-06 06:41:00.098578'\n    email: somanianurmahal@gmail.com\n    reset_password_token: \n    reset_password_sent_at: \n    remember_created_at: \n    sign_in_count: 5\n    current_sign_in_at: '2019-01-06 06:41:00.096400'\n    last_sign_in_at: '2018-12-11 05:33:55.538012'\n    current_sign_in_ip: \"::1\"\n    last_sign_in_ip: \"::1\"\n  attributes: !ruby/object:ActiveRecord::AttributeSet\n    attributes: !ruby/object:ActiveRecord::LazyAttributeHash\n      delegate_hash:\n        encrypted_password: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: encrypted_password\n          value_before_type_cast: \"$2a$11$kF2w9sEZkL1WuwYp6SH6q.EDtmUSQXex8.XqDwqZSv5Mcd3B9hsWW\"\n          type: *5\n          original_attribute: \n          value: \"$2a$11$kF2w9sEZkL1WuwYp6SH6q.EDtmUSQXex8.XqDwqZSv5Mcd3B9hsWW\"\n        id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: id\n          value_before_type_cast: 1\n          type: *6\n          original_attribute: \n        name: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: name\n          value_before_type_cast: Somania\n          type: *5\n          original_attribute: \n        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: created_at\n          value_before_type_cast: '2018-12-10 11:15:26.653851'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: updated_at\n          value_before_type_cast: '2019-01-06 06:41:00.098578'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        email: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: email\n          value_before_type_cast: somanianurmahal@gmail.com\n          type: *5\n          original_attribute: \n        reset_password_token: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: reset_password_token\n          value_before_type_cast: \n          type: *5\n          original_attribute: \n        reset_password_sent_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: reset_password_sent_at\n          value_before_type_cast: \n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        remember_created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: remember_created_at\n          value_before_type_cast: \n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        sign_in_count: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: sign_in_count\n          value_before_type_cast: 5\n          type: *1\n          original_attribute: \n        current_sign_in_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: current_sign_in_at\n          value_before_type_cast: '2019-01-06 06:41:00.096400'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        last_sign_in_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: last_sign_in_at\n          value_before_type_cast: '2018-12-11 05:33:55.538012'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        current_sign_in_ip: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: current_sign_in_ip\n          value_before_type_cast: \"::1\"\n          type: *5\n          original_attribute: \n        last_sign_in_ip: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: last_sign_in_ip\n          value_before_type_cast: \"::1\"\n          type: *5\n          original_attribute: \n  new_record: false\n  active_record_yaml_version: 1\n"], ["run_at", 2019-01-06 06:42:56 UTC], ["created_at", 2019-01-06 06:42:56 UTC], ["updated_at", 2019-01-06 06:42:56 UTC]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 302 Found in 93ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:42:56 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.8ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.6ms)
+  Rendered orders/index.html.erb within layouts/application (31.7ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 114ms (Views: 109.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:42:58 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.9ms)
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.5ms)
+  Rendered items/index.html.erb within layouts/application (11.7ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 95ms (Views: 87.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:44:52 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (7.1ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.5ms)
+  Rendered orders/index.html.erb within layouts/application (25.0ms)
+  Rendered layouts/_notifications.html.erb (0.6ms)
+Completed 200 OK in 143ms (Views: 129.8ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-01-06 12:44:56 +0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"l4vjtn98xrdw4lvj+xsdm86dLHtgNiYiS9PJ3IhxJkE4NuBKk7P0Is7sJ0KLps6X8+6lfUG4kNN0z8RzKWK/7w=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:44:56 +0600
+Processing by OrdersController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-01-06 12:44:56 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 92ms (Views: 90.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-01-06 12:46:12 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"udK/zCEkeSlIdP3wfWcUjp682FU3RWWu2rQp5eWRHcF9bcRATd2ewJHH2Lc50NgK6O0vmXDnkZtKRb26NlilKg==", "user"=>{"email"=>"somanianurmahal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "somanianurmahal@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2019-01-06 06:46:12 UTC], ["last_sign_in_at", 2019-01-06 06:41:00 UTC], ["sign_in_count", 6], ["updated_at", 2019-01-06 06:46:12 UTC], ["id", 1]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 139ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:46:12 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (4.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered orders/index.html.erb within layouts/application (21.2ms)
+  Rendered layouts/_notifications.html.erb (0.8ms)
+Completed 200 OK in 130ms (Views: 122.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:46:47 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.7ms)
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered items/index.html.erb within layouts/application (12.1ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 106ms (Views: 99.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:47:05 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (1.2ms)
+  Rendered orders/index.html.erb within layouts/application (19.8ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 93ms (Views: 88.9ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/orders/3" for ::1 at 2019-01-06 12:47:09 +0600
+Processing by OrdersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"11gPZmxBzlbOtH6Gblt6Eqyvhw4Jmtqb1RjKaakAWPmhsSvOWGM/OdBw+itYNb2ehZyTgUlpUGYNsv45TuWARw==", "id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (2.8ms)[0m  [1m[33mUPDATE "items" SET "remaining_quantity" = COALESCE("remaining_quantity", 0) + 10 WHERE "items"."id" = ?[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = ?[0m  [["id", 3]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/orders
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "delayed_jobs" ("handler", "run_at", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["handler", "--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class 'OrderMailer'\nmethod_name: :cancel_order\nargs:\n- !ruby/object:Order\n  raw_attributes:\n    quantity: '10'\n    item_id: 3\n    id: 3\n    status: t\n    expire_at: '2019-01-25'\n    member_id: 1\n    created_at: '2019-01-06 06:42:56.138994'\n    updated_at: '2019-01-06 06:42:56.138994'\n  attributes: !ruby/object:ActiveRecord::AttributeSet\n    attributes: !ruby/object:ActiveRecord::LazyAttributeHash\n      delegate_hash:\n        quantity: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: quantity\n          value_before_type_cast: '10'\n          type: &3 !ruby/object:ActiveModel::Type::String\n            precision: \n            scale: \n            limit: \n          original_attribute: \n          value: '10'\n        item_id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: item_id\n          value_before_type_cast: 3\n          type: &1 !ruby/object:ActiveModel::Type::Integer\n            precision: \n            scale: \n            limit: \n            range: !ruby/range\n              begin: -2147483648\n              end: 2147483648\n              excl: true\n          original_attribute: \n          value: 3\n        id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: id\n          value_before_type_cast: 3\n          type: &4 !ruby/object:ActiveModel::Type::Integer\n            precision: \n            scale: \n            limit: \n            range: !ruby/range\n              begin: -2147483648\n              end: 2147483648\n              excl: true\n          original_attribute: \n          value: 3\n        status: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: status\n          value_before_type_cast: t\n          type: !ruby/object:ActiveModel::Type::Boolean\n            precision: \n            scale: \n            limit: \n          original_attribute: \n        expire_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: expire_at\n          value_before_type_cast: '2019-01-25'\n          type: !ruby/object:ActiveRecord::Type::Date\n            precision: \n            scale: \n            limit: \n          original_attribute: \n        member_id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: member_id\n          value_before_type_cast: 1\n          type: *1\n          original_attribute: \n        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: created_at\n          value_before_type_cast: '2019-01-06 06:42:56.138994'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: &2 !ruby/object:ActiveRecord::Type::DateTime\n              precision: \n              scale: \n              limit: \n          original_attribute: \n        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: updated_at\n          value_before_type_cast: '2019-01-06 06:42:56.138994'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *2\n          original_attribute: \n  new_record: false\n  active_record_yaml_version: 1\n- !ruby/object:User\n  raw_attributes:\n    encrypted_password: \"$2a$11$kF2w9sEZkL1WuwYp6SH6q.EDtmUSQXex8.XqDwqZSv5Mcd3B9hsWW\"\n    id: 1\n    name: Somania\n    created_at: '2018-12-10 11:15:26.653851'\n    updated_at: '2019-01-06 06:46:12.469772'\n    email: somanianurmahal@gmail.com\n    reset_password_token: \n    reset_password_sent_at: \n    remember_created_at: \n    sign_in_count: 6\n    current_sign_in_at: '2019-01-06 06:46:12.468869'\n    last_sign_in_at: '2019-01-06 06:41:00.096400'\n    current_sign_in_ip: \"::1\"\n    last_sign_in_ip: \"::1\"\n  attributes: !ruby/object:ActiveRecord::AttributeSet\n    attributes: !ruby/object:ActiveRecord::LazyAttributeHash\n      delegate_hash:\n        encrypted_password: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: encrypted_password\n          value_before_type_cast: \"$2a$11$kF2w9sEZkL1WuwYp6SH6q.EDtmUSQXex8.XqDwqZSv5Mcd3B9hsWW\"\n          type: *3\n          original_attribute: \n          value: \"$2a$11$kF2w9sEZkL1WuwYp6SH6q.EDtmUSQXex8.XqDwqZSv5Mcd3B9hsWW\"\n        id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: id\n          value_before_type_cast: 1\n          type: *4\n          original_attribute: \n        name: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: name\n          value_before_type_cast: Somania\n          type: *3\n          original_attribute: \n        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: created_at\n          value_before_type_cast: '2018-12-10 11:15:26.653851'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *2\n          original_attribute: \n        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: updated_at\n          value_before_type_cast: '2019-01-06 06:46:12.469772'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *2\n          original_attribute: \n        email: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: email\n          value_before_type_cast: somanianurmahal@gmail.com\n          type: *3\n          original_attribute: \n        reset_password_token: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: reset_password_token\n          value_before_type_cast: \n          type: *3\n          original_attribute: \n        reset_password_sent_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: reset_password_sent_at\n          value_before_type_cast: \n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *2\n          original_attribute: \n        remember_created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: remember_created_at\n          value_before_type_cast: \n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *2\n          original_attribute: \n        sign_in_count: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: sign_in_count\n          value_before_type_cast: 6\n          type: *1\n          original_attribute: \n        current_sign_in_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: current_sign_in_at\n          value_before_type_cast: '2019-01-06 06:46:12.468869'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *2\n          original_attribute: \n        last_sign_in_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: last_sign_in_at\n          value_before_type_cast: '2019-01-06 06:41:00.096400'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *2\n          original_attribute: \n        current_sign_in_ip: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: current_sign_in_ip\n          value_before_type_cast: \"::1\"\n          type: *3\n          original_attribute: \n        last_sign_in_ip: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: last_sign_in_ip\n          value_before_type_cast: \"::1\"\n          type: *3\n          original_attribute: \n  new_record: false\n  active_record_yaml_version: 1\n"], ["run_at", 2019-01-06 06:47:09 UTC], ["created_at", 2019-01-06 06:47:09 UTC], ["updated_at", 2019-01-06 06:47:09 UTC]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 302 Found in 44ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/orders" for ::1 at 2019-01-06 12:47:09 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (17.2ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 94ms (Views: 88.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/past_orders" for ::1 at 2019-01-06 12:47:15 +0600
+Processing by OrdersController#old as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/old.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.6ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", false]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_footer.html.erb (0.2ms)
+  Rendered orders/old.html.erb within layouts/application (19.8ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 93ms (Views: 86.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:47:20 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.6ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.5ms)
+  Rendered items/index.html.erb within layouts/application (10.7ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 99ms (Views: 94.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:47:48 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.3ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (21.2ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 98ms (Views: 91.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:48:09 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.9ms)
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.6ms)
+  Rendered items/index.html.erb within layouts/application (12.9ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 109ms (Views: 100.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/past_orders" for ::1 at 2019-01-06 12:48:13 +0600
+Processing by OrdersController#old as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/old.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.9ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", false]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/old.html.erb within layouts/application (20.2ms)
+  Rendered layouts/_notifications.html.erb (0.6ms)
+Completed 200 OK in 113ms (Views: 108.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:48:14 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.2ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered items/index.html.erb within layouts/application (11.4ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 120ms (Views: 114.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:48:15 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.8ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (14.4ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 93ms (Views: 87.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/past_orders" for ::1 at 2019-01-06 12:48:16 +0600
+Processing by OrdersController#old as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/old.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (5.5ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", false]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered orders/old.html.erb within layouts/application (22.2ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 103ms (Views: 98.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/items/new" for ::1 at 2019-01-06 12:48:21 +0600
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (15.6ms)
+  Rendered items/new.html.erb within layouts/application (20.3ms)
+  Rendered layouts/_notifications.html.erb (0.7ms)
+Completed 200 OK in 107ms (Views: 101.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:48:26 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.4ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.7ms)
+  Rendered orders/index.html.erb within layouts/application (18.7ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 102ms (Views: 95.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:48:27 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.3ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered items/index.html.erb within layouts/application (14.2ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 100ms (Views: 92.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/items/1/edit" for ::1 at 2019-01-06 12:48:40 +0600
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/edit.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.4ms)
+  Rendered items/edit.html.erb within layouts/application (8.2ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 95ms (Views: 86.9ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/items/1" for ::1 at 2019-01-06 12:48:45 +0600
+Processing by ItemsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WGh0bEwZ6bLwx9kmk66peCiDCQ7HsOuZ1AfloPabf48ugVDEeDsY3e4DXYulwG70AbAdgYdDYWQMrdHwEX6nMQ==", "item"=>{"name"=>"Bedsheet", "description"=>"linen bed sheet ", "quantity"=>"20", "remaining_quantity"=>"20", "category"=>"Hardware"}, "commit"=>"Submit", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:48:45 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.6ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (15.0ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 102ms (Views: 92.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:48:56 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.4ms)
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.2ms)
+  Rendered items/index.html.erb within layouts/application (10.3ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 92ms (Views: 83.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/items/1/edit" for ::1 at 2019-01-06 12:48:59 +0600
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/edit.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.4ms)
+  Rendered items/edit.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 96ms (Views: 92.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:49:02 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.9ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (18.2ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 88ms (Views: 82.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:49:04 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.9ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (24.1ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 114ms (Views: 106.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:49:11 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.2ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered items/index.html.erb within layouts/application (12.5ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 93ms (Views: 85.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:55:15 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.6ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (20.6ms)
+  Rendered layouts/_notifications.html.erb (0.6ms)
+Completed 200 OK in 140ms (Views: 130.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/items" for ::1 at 2019-01-06 12:55:17 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (5.2ms)
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (1.2ms)
+  Rendered items/index.html.erb within layouts/application (17.7ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 151ms (Views: 145.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/past_orders" for ::1 at 2019-01-06 12:55:18 +0600
+Processing by OrdersController#old as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/old.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.5ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", false]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered orders/old.html.erb within layouts/application (19.8ms)
+  Rendered layouts/_notifications.html.erb (0.6ms)
+Completed 200 OK in 129ms (Views: 123.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:55:20 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (23.7ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 111ms (Views: 104.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:55:25 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (21.9ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 120ms (Views: 113.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:55:53 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered orders/index.html.erb within layouts/application (25.0ms)
+  Rendered layouts/_notifications.html.erb (0.6ms)
+Completed 200 OK in 147ms (Views: 140.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2019-01-06 12:56:33 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (5.3ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-06') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (5.9ms)
+  Rendered orders/index.html.erb within layouts/application (34.2ms)
+  Rendered layouts/_notifications.html.erb (0.7ms)
+Completed 200 OK in 134ms (Views: 123.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:01:14 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by OrdersController#index as HTML
+Completed 401 Unauthorized in 16ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-01-15 14:01:14 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (14.7ms)
+  Rendered layouts/_notifications.html.erb (1.5ms)
+Completed 200 OK in 654ms (Views: 636.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-01-15 14:01:19 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EuNTfGeJ+3BmRLtt/ZN7ezhV0UJGRhLratjIO648XwTqYeCpGSqMTsC88JxAq45CYPWpnXR15Y8oH2+tZhqWQA==", "user"=>{"email"=>"somanianurmahal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "somanianurmahal@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2019-01-15 08:01:19 UTC], ["last_sign_in_at", 2019-01-06 06:46:12 UTC], ["sign_in_count", 7], ["updated_at", 2019-01-15 08:01:19 UTC], ["id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 172ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:01:19 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.0ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (23.2ms)
+  Rendered layouts/_notifications.html.erb (0.7ms)
+Completed 200 OK in 139ms (Views: 109.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2019-01-15 14:01:27 +0600
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (4.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered users/edit.html.erb within layouts/application (15.6ms)
+  Rendered layouts/_notifications.html.erb (0.8ms)
+Completed 200 OK in 119ms (Views: 111.5ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/users/1" for ::1 at 2019-01-15 14:01:37 +0600
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7S88TrNRCWkfaQ5vc2T+YK4LVva8cLzlbESt2nKvLtYD8qUCp9kWSH2Sp2qrRakJLpM18AOgI0gLF99DIhMm7Q==", "user"=>{"name"=>"Somania", "email"=>"somanianurmahal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Submit", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "encrypted_password" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["encrypted_password", "$2a$11$7w9.Sg3mEHya6fmb.pxJ0uG8pr06ja5LUjdgJ6cHUUS0pwSLbYqdW"], ["updated_at", 2019-01-15 08:01:37 UTC], ["id", 1]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 124ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:01:37 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-01-15 14:01:37 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_notifications.html.erb (0.6ms)
+Completed 200 OK in 84ms (Views: 83.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-01-15 14:01:43 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xqw3hRi9RNBOkixAC5hBG85nH1aJ1yzejzE1sI88lJSwca7JDDVb8SxphUXTuRZyTv98UDYHs3PoYkcp34Ccrw==", "user"=>{"email"=>"somanianurmahal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "somanianurmahal@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2019-01-15 08:01:43 UTC], ["last_sign_in_at", 2019-01-15 08:01:19 UTC], ["sign_in_count", 8], ["updated_at", 2019-01-15 08:01:43 UTC], ["id", 1]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 135ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:01:43 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.7ms)
+  Rendered orders/index.html.erb within layouts/application (12.9ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 93ms (Views: 88.8ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-01-15 14:03:21 +0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IQsyW3T0VnFGk/8LTB2XKe+1r4EsqabKbQDx+FV1jZ7CtP2gIh9vu0XnzK5vTYQCPQZNto+2C59ryAKsY7J8PQ=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:03:21 +0600
+Processing by OrdersController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-01-15 14:03:21 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_notifications.html.erb (0.7ms)
+Completed 200 OK in 103ms (Views: 100.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-01-15 14:03:44 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wW7tbl7egbxMQlfa7Kv7rUvfm0u2ef1FsoUFOPF3AoLxq7bZSY9RdejHSiUCgXQC56Y1lGQKXV+u5cKk6T4dgQ==", "user"=>{"email"=>"somanianurmahal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "somanianurmahal@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2019-01-15 08:03:44 UTC], ["last_sign_in_at", 2019-01-15 08:01:43 UTC], ["sign_in_count", 9], ["updated_at", 2019-01-15 08:03:44 UTC], ["id", 1]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 133ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:03:44 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.1ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (14.6ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 90ms (Views: 85.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/items/new" for ::1 at 2019-01-15 14:04:11 +0600
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.1ms)
+  Rendered items/new.html.erb within layouts/application (11.6ms)
+  Rendered layouts/_notifications.html.erb (0.8ms)
+Completed 200 OK in 120ms (Views: 109.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/items" for ::1 at 2019-01-15 14:04:20 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.4ms)
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered items/index.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_notifications.html.erb (0.9ms)
+Completed 200 OK in 104ms (Views: 97.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/members/new" for ::1 at 2019-01-15 14:04:43 +0600
+Processing by MembersController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering members/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+  Rendered members/new.html.erb within layouts/application (10.0ms)
+  Rendered layouts/_notifications.html.erb (0.9ms)
+Completed 200 OK in 109ms (Views: 102.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/members" for ::1 at 2019-01-15 14:05:03 +0600
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VJjsl8BNEPv24paKrz2BsdLLpxAM6leIm8vo1JzYjFb2D2nsLd6KCBeuclOGj/NFSoZQDJZQ9a+D1Q4azVwXPQ==", "member"=>{"name"=>"tamim", "email"=>"someone@gmail.com", "phone"=>"012123456"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "tamim"], ["email", "someone@gmail.com"], ["phone", "012123456"], ["created_at", 2019-01-15 08:05:03 UTC], ["updated_at", 2019-01-15 08:05:03 UTC]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 4.8ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:05:03 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (4.1ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.5ms)
+  Rendered orders/index.html.erb within layouts/application (19.2ms)
+  Rendered layouts/_notifications.html.erb (0.9ms)
+Completed 200 OK in 150ms (Views: 141.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/items" for ::1 at 2019-01-15 14:05:08 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.7ms)
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered items/index.html.erb within layouts/application (8.2ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 113ms (Views: 107.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/orders/new?item=1" for ::1 at 2019-01-15 14:05:11 +0600
+Processing by OrdersController#new as HTML
+  Parameters: {"item"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.8ms)
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/new.html.erb within layouts/application (9.7ms)
+  Rendered layouts/_notifications.html.erb (0.7ms)
+Completed 200 OK in 99ms (Views: 87.1ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/orders" for ::1 at 2019-01-15 14:05:24 +0600
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bgo3Ol7RGiR5DbVlnAe876HF5YKJysTycSBxEJVvhpHMnbJBs0KA15hBUby1tc4bOYgSnhNwZtVpPpfexOsd+g==", "order"=>{"quantity"=>"4", "expire_at"=>"2019/01/31", "member_id"=>"3", "item_id"=>"1"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "orders" ("quantity", "status", "expire_at", "item_id", "member_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["quantity", "4"], ["status", true], ["expire_at", Thu, 31 Jan 2019], ["item_id", 1], ["member_id", 3], ["created_at", 2019-01-15 08:05:24 UTC], ["updated_at", 2019-01-15 08:05:24 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "items" SET "remaining_quantity" = COALESCE("remaining_quantity", 0) - 4 WHERE "items"."id" = ?[0m  [["id", 1]]
+Redirected to http://localhost:3000/
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "delayed_jobs" ("handler", "run_at", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["handler", "--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class 'OrderMailer'\nmethod_name: :create_order\nargs:\n- !ruby/object:Order\n  raw_attributes:\n    id: 4\n    quantity: '4'\n    status: true\n    expire_at: 2019-01-31\n    item_id: 1\n    member_id: 3\n    created_at: &2 2019-01-15 08:05:24.483789000 Z\n    updated_at: &3 2019-01-15 08:05:24.483789000 Z\n  attributes: !ruby/object:ActiveRecord::AttributeSet\n    attributes:\n      id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: id\n        value_before_type_cast: 4\n        type: !ruby/object:ActiveModel::Type::Integer\n          precision: \n          scale: \n          limit: \n          range: !ruby/range\n            begin: -2147483648\n            end: 2147483648\n            excl: true\n        original_attribute: \n      quantity: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: quantity\n        value_before_type_cast: '4'\n        type: !ruby/object:ActiveModel::Type::String\n          precision: \n          scale: \n          limit: \n        original_attribute: \n      status: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: status\n        value_before_type_cast: true\n        type: !ruby/object:ActiveModel::Type::Boolean\n          precision: \n          scale: \n          limit: \n        original_attribute: \n      expire_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: expire_at\n        value_before_type_cast: 2019-01-31\n        type: !ruby/object:ActiveRecord::Type::Date\n          precision: \n          scale: \n          limit: \n        original_attribute: \n      item_id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: item_id\n        value_before_type_cast: 1\n        type: &1 !ruby/object:ActiveModel::Type::Integer\n          precision: \n          scale: \n          limit: \n          range: !ruby/range\n            begin: -2147483648\n            end: 2147483648\n            excl: true\n        original_attribute: \n      member_id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: member_id\n        value_before_type_cast: 3\n        type: *1\n        original_attribute: \n      created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: created_at\n        value_before_type_cast: *2\n        type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n          :__v2__: []\n          []: &4 !ruby/object:ActiveRecord::Type::DateTime\n            precision: \n            scale: \n            limit: \n        original_attribute: \n      updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n        name: updated_at\n        value_before_type_cast: *3\n        type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n          :__v2__: []\n          []: *4\n        original_attribute: \n  new_record: false\n  active_record_yaml_version: 1\n- !ruby/object:User\n  raw_attributes:\n    encrypted_password: \"$2a$11$7w9.Sg3mEHya6fmb.pxJ0uG8pr06ja5LUjdgJ6cHUUS0pwSLbYqdW\"\n    id: 1\n    name: Somania\n    created_at: '2018-12-10 11:15:26.653851'\n    updated_at: '2019-01-15 08:03:44.183638'\n    email: somanianurmahal@gmail.com\n    reset_password_token: \n    reset_password_sent_at: \n    remember_created_at: \n    sign_in_count: 9\n    current_sign_in_at: '2019-01-15 08:03:44.182506'\n    last_sign_in_at: '2019-01-15 08:01:43.805811'\n    current_sign_in_ip: \"::1\"\n    last_sign_in_ip: \"::1\"\n  attributes: !ruby/object:ActiveRecord::AttributeSet\n    attributes: !ruby/object:ActiveRecord::LazyAttributeHash\n      delegate_hash:\n        encrypted_password: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: encrypted_password\n          value_before_type_cast: \"$2a$11$7w9.Sg3mEHya6fmb.pxJ0uG8pr06ja5LUjdgJ6cHUUS0pwSLbYqdW\"\n          type: &5 !ruby/object:ActiveModel::Type::String\n            precision: \n            scale: \n            limit: \n          original_attribute: \n          value: \"$2a$11$7w9.Sg3mEHya6fmb.pxJ0uG8pr06ja5LUjdgJ6cHUUS0pwSLbYqdW\"\n        id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: id\n          value_before_type_cast: 1\n          type: !ruby/object:ActiveModel::Type::Integer\n            precision: \n            scale: \n            limit: \n            range: !ruby/range\n              begin: -2147483648\n              end: 2147483648\n              excl: true\n          original_attribute: \n        name: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: name\n          value_before_type_cast: Somania\n          type: *5\n          original_attribute: \n        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: created_at\n          value_before_type_cast: '2018-12-10 11:15:26.653851'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: &6 !ruby/object:ActiveRecord::Type::DateTime\n              precision: \n              scale: \n              limit: \n          original_attribute: \n        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: updated_at\n          value_before_type_cast: '2019-01-15 08:03:44.183638'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *6\n          original_attribute: \n        email: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: email\n          value_before_type_cast: somanianurmahal@gmail.com\n          type: *5\n          original_attribute: \n        reset_password_token: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: reset_password_token\n          value_before_type_cast: \n          type: *5\n          original_attribute: \n        reset_password_sent_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: reset_password_sent_at\n          value_before_type_cast: \n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *6\n          original_attribute: \n        remember_created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: remember_created_at\n          value_before_type_cast: \n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *6\n          original_attribute: \n        sign_in_count: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: sign_in_count\n          value_before_type_cast: 9\n          type: !ruby/object:ActiveModel::Type::Integer\n            precision: \n            scale: \n            limit: \n            range: !ruby/range\n              begin: -2147483648\n              end: 2147483648\n              excl: true\n          original_attribute: \n        current_sign_in_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: current_sign_in_at\n          value_before_type_cast: '2019-01-15 08:03:44.182506'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *6\n          original_attribute: \n        last_sign_in_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: last_sign_in_at\n          value_before_type_cast: '2019-01-15 08:01:43.805811'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *6\n          original_attribute: \n        current_sign_in_ip: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: current_sign_in_ip\n          value_before_type_cast: \"::1\"\n          type: *5\n          original_attribute: \n        last_sign_in_ip: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: last_sign_in_ip\n          value_before_type_cast: \"::1\"\n          type: *5\n          original_attribute: \n  new_record: false\n  active_record_yaml_version: 1\n"], ["run_at", 2019-01-15 08:05:24 UTC], ["created_at", 2019-01-15 08:05:24 UTC], ["updated_at", 2019-01-15 08:05:24 UTC]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 302 Found in 84ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:05:24 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.7ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (28.8ms)
+  Rendered layouts/_notifications.html.erb (0.6ms)
+Completed 200 OK in 154ms (Views: 149.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/items" for ::1 at 2019-01-15 14:05:30 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.2ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered items/index.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 80ms (Views: 74.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/past_orders" for ::1 at 2019-01-15 14:05:37 +0600
+Processing by OrdersController#old as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/old.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.1ms)
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", false]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/old.html.erb within layouts/application (13.7ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 94ms (Views: 88.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:06:25 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (16.0ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 84ms (Views: 77.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/return/4" for ::1 at 2019-01-15 14:06:34 +0600
+Processing by OrdersController#disable as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (3.2ms)[0m  [1m[33mUPDATE "items" SET "remaining_quantity" = COALESCE("remaining_quantity", 0) + 4 WHERE "items"."id" = ?[0m  [["id", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ?[0m  [["id", 4]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "orders" SET "status" = ?, "updated_at" = ? WHERE "orders"."id" = ?[0m  [["status", false], ["updated_at", 2019-01-15 08:06:34 UTC], ["id", 4]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "delayed_jobs" ("handler", "run_at", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["handler", "--- !ruby/object:Delayed::PerformableMailer\nobject: !ruby/class 'OrderMailer'\nmethod_name: :return_order\nargs:\n- !ruby/object:Order\n  raw_attributes:\n    id: 4\n    quantity: '4'\n    status: t\n    expire_at: '2019-01-31'\n    item_id: 1\n    member_id: 3\n    created_at: '2019-01-15 08:05:24.483789'\n    updated_at: '2019-01-15 08:05:24.483789'\n  attributes: !ruby/object:ActiveRecord::AttributeSet\n    attributes: !ruby/object:ActiveRecord::LazyAttributeHash\n      delegate_hash:\n        id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: id\n          value_before_type_cast: 4\n          type: !ruby/object:ActiveModel::Type::Integer\n            precision: \n            scale: \n            limit: \n            range: !ruby/range\n              begin: -2147483648\n              end: 2147483648\n              excl: true\n          original_attribute: \n        quantity: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: quantity\n          value_before_type_cast: '4'\n          type: !ruby/object:ActiveModel::Type::String\n            precision: \n            scale: \n            limit: \n          original_attribute: \n        status: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: status\n          value_before_type_cast: t\n          type: !ruby/object:ActiveModel::Type::Boolean\n            precision: \n            scale: \n            limit: \n          original_attribute: \n        expire_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: expire_at\n          value_before_type_cast: '2019-01-31'\n          type: !ruby/object:ActiveRecord::Type::Date\n            precision: \n            scale: \n            limit: \n          original_attribute: \n        item_id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: item_id\n          value_before_type_cast: 1\n          type: &1 !ruby/object:ActiveModel::Type::Integer\n            precision: \n            scale: \n            limit: \n            range: !ruby/range\n              begin: -2147483648\n              end: 2147483648\n              excl: true\n          original_attribute: \n        member_id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: member_id\n          value_before_type_cast: 3\n          type: *1\n          original_attribute: \n        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: created_at\n          value_before_type_cast: '2019-01-15 08:05:24.483789'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: &2 !ruby/object:ActiveRecord::Type::DateTime\n              precision: \n              scale: \n              limit: \n          original_attribute: \n        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: updated_at\n          value_before_type_cast: '2019-01-15 08:05:24.483789'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *2\n          original_attribute: \n  new_record: false\n  active_record_yaml_version: 1\n- !ruby/object:User\n  raw_attributes:\n    encrypted_password: \"$2a$11$7w9.Sg3mEHya6fmb.pxJ0uG8pr06ja5LUjdgJ6cHUUS0pwSLbYqdW\"\n    id: 1\n    name: Somania\n    created_at: '2018-12-10 11:15:26.653851'\n    updated_at: '2019-01-15 08:03:44.183638'\n    email: somanianurmahal@gmail.com\n    reset_password_token: \n    reset_password_sent_at: \n    remember_created_at: \n    sign_in_count: 9\n    current_sign_in_at: '2019-01-15 08:03:44.182506'\n    last_sign_in_at: '2019-01-15 08:01:43.805811'\n    current_sign_in_ip: \"::1\"\n    last_sign_in_ip: \"::1\"\n  attributes: !ruby/object:ActiveRecord::AttributeSet\n    attributes: !ruby/object:ActiveRecord::LazyAttributeHash\n      delegate_hash:\n        encrypted_password: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: encrypted_password\n          value_before_type_cast: \"$2a$11$7w9.Sg3mEHya6fmb.pxJ0uG8pr06ja5LUjdgJ6cHUUS0pwSLbYqdW\"\n          type: &3 !ruby/object:ActiveModel::Type::String\n            precision: \n            scale: \n            limit: \n          original_attribute: \n          value: \"$2a$11$7w9.Sg3mEHya6fmb.pxJ0uG8pr06ja5LUjdgJ6cHUUS0pwSLbYqdW\"\n        id: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: id\n          value_before_type_cast: 1\n          type: !ruby/object:ActiveModel::Type::Integer\n            precision: \n            scale: \n            limit: \n            range: !ruby/range\n              begin: -2147483648\n              end: 2147483648\n              excl: true\n          original_attribute: \n        name: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: name\n          value_before_type_cast: Somania\n          type: *3\n          original_attribute: \n        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: created_at\n          value_before_type_cast: '2018-12-10 11:15:26.653851'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: &4 !ruby/object:ActiveRecord::Type::DateTime\n              precision: \n              scale: \n              limit: \n          original_attribute: \n        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: updated_at\n          value_before_type_cast: '2019-01-15 08:03:44.183638'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        email: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: email\n          value_before_type_cast: somanianurmahal@gmail.com\n          type: *3\n          original_attribute: \n        reset_password_token: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: reset_password_token\n          value_before_type_cast: \n          type: *3\n          original_attribute: \n        reset_password_sent_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: reset_password_sent_at\n          value_before_type_cast: \n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        remember_created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: remember_created_at\n          value_before_type_cast: \n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        sign_in_count: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: sign_in_count\n          value_before_type_cast: 9\n          type: !ruby/object:ActiveModel::Type::Integer\n            precision: \n            scale: \n            limit: \n            range: !ruby/range\n              begin: -2147483648\n              end: 2147483648\n              excl: true\n          original_attribute: \n        current_sign_in_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: current_sign_in_at\n          value_before_type_cast: '2019-01-15 08:03:44.182506'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        last_sign_in_at: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: last_sign_in_at\n          value_before_type_cast: '2019-01-15 08:01:43.805811'\n          type: !ruby/marshalable:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter\n            :__v2__: []\n            []: *4\n          original_attribute: \n        current_sign_in_ip: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: current_sign_in_ip\n          value_before_type_cast: \"::1\"\n          type: *3\n          original_attribute: \n        last_sign_in_ip: !ruby/object:ActiveRecord::Attribute::FromDatabase\n          name: last_sign_in_ip\n          value_before_type_cast: \"::1\"\n          type: *3\n          original_attribute: \n  new_record: false\n  active_record_yaml_version: 1\n"], ["run_at", 2019-01-15 08:06:34 UTC], ["created_at", 2019-01-15 08:06:34 UTC], ["updated_at", 2019-01-15 08:06:34 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 302 Found in 31ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:06:34 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.7ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (11.7ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 90ms (Views: 85.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/items" for ::1 at 2019-01-15 14:06:39 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.2ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered items/index.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 76ms (Views: 72.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:06:46 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.0ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 88ms (Views: 82.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/items" for ::1 at 2019-01-15 14:07:01 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (3.3ms)
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (1.1ms)
+  Rendered items/index.html.erb within layouts/application (12.1ms)
+  Rendered layouts/_notifications.html.erb (1.9ms)
+Completed 200 OK in 88ms (Views: 84.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:07:07 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (8.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered orders/index.html.erb within layouts/application (20.5ms)
+  Rendered layouts/_notifications.html.erb (0.7ms)
+Completed 200 OK in 112ms (Views: 105.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:08:44 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered orders/index.html.erb within layouts/application (25.9ms)
+  Rendered layouts/_notifications.html.erb (0.9ms)
+Completed 200 OK in 218ms (Views: 212.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2019-01-15 14:08:47 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.4ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."quantity") FROM "items"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT SUM("items"."remaining_quantity") FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE (expire_at < '2019-01-15') AND "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/index.html.erb within layouts/application (14.3ms)
+  Rendered layouts/_notifications.html.erb (1.2ms)
+Completed 200 OK in 101ms (Views: 97.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/items" for ::1 at 2019-01-15 14:08:47 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.8ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered items/index.html.erb within layouts/application (9.7ms)
+  Rendered layouts/_notifications.html.erb (0.7ms)
+Completed 200 OK in 107ms (Views: 101.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/past_orders" for ::1 at 2019-01-15 14:08:48 +0600
+Processing by OrdersController#old as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering orders/old.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.7ms)
+  [1m[36mOrder Load (0.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."status" = ?[0m  [["status", false]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT  "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_footer.html.erb (0.3ms)
+  Rendered orders/old.html.erb within layouts/application (13.6ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 89ms (Views: 81.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/items/new" for ::1 at 2019-01-15 14:08:49 +0600
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (1.9ms)
+  Rendered items/new.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 83ms (Views: 78.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/members/new" for ::1 at 2019-01-15 14:08:50 +0600
+Processing by MembersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering members/new.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+  Rendered members/new.html.erb within layouts/application (8.3ms)
+  Rendered layouts/_notifications.html.erb (0.4ms)
+Completed 200 OK in 76ms (Views: 71.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/items" for ::1 at 2019-01-15 14:08:51 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.2ms)
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.5ms)
+  Rendered items/index.html.erb within layouts/application (9.4ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 82ms (Views: 79.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/items" for ::1 at 2019-01-15 14:10:24 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered layouts/_header.html.erb (2.8ms)
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered layouts/_footer.html.erb (0.5ms)
+  Rendered items/index.html.erb within layouts/application (10.8ms)
+  Rendered layouts/_notifications.html.erb (0.5ms)
+Completed 200 OK in 119ms (Views: 114.8ms | ActiveRecord: 0.3ms)
+
+

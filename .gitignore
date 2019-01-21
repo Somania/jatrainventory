@@ -2,3 +2,9 @@
 tmp/pids/server.pid
 .idea/vcs.xml
 .idea/workspace.xml
+log/development.log
+.idea/workspace.xml
+*.cache
+*.xml
+*.xml
+.idea/workspace.xml
